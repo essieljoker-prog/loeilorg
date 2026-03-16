@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-ink text-white pt-20 pb-10">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -10,7 +13,7 @@ export const Footer = () => {
             L’œil <span className="text-gold">ORG</span>
           </Link>
           <p className="text-white/60 text-sm leading-relaxed">
-            Nous rendons votre cérémonie originale et inoubliable. Excellence, élégance et créativité au service de vos plus beaux moments.
+            {t('footer.tagline')}
           </p>
           <div className="flex items-center space-x-4">
             <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300">
@@ -26,30 +29,30 @@ export const Footer = () => {
         </div>
 
         <div>
-          <h4 className="text-lg font-serif font-medium mb-6">Liens Rapides</h4>
+          <h4 className="text-lg font-serif font-medium mb-6">{t('footer.quickLinks')}</h4>
           <ul className="space-y-4 text-sm text-white/60">
-            <li><Link to="/" className="hover:text-gold transition-colors">Accueil</Link></li>
-            <li><Link to="/about" className="hover:text-gold transition-colors">À Propos</Link></li>
-            <li><Link to="/services" className="hover:text-gold transition-colors">Services</Link></li>
-            <li><Link to="/gallery" className="hover:text-gold transition-colors">Galerie</Link></li>
-            <li><Link to="/contact" className="hover:text-gold transition-colors">Contact</Link></li>
+            <li><Link to="/" className="hover:text-gold transition-colors">{t('nav.home')}</Link></li>
+            <li><Link to="/about" className="hover:text-gold transition-colors">{t('nav.about')}</Link></li>
+            <li><Link to="/services" className="hover:text-gold transition-colors">{t('nav.services')}</Link></li>
+            <li><Link to="/gallery" className="hover:text-gold transition-colors">{t('nav.gallery')}</Link></li>
+            <li><Link to="/contact" className="hover:text-gold transition-colors">{t('nav.contact')}</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-lg font-serif font-medium mb-6">Services</h4>
+          <h4 className="text-lg font-serif font-medium mb-6">{t('nav.services')}</h4>
           <ul className="space-y-4 text-sm text-white/60">
-            <li>Wedding Planning</li>
-            <li>Organisation d'Événements</li>
-            <li>Service Traiteur</li>
-            <li>Maquillage Professionnel</li>
-            <li>Coiffure & Soins</li>
-            <li>Pédicure & Manucure</li>
+            <li>{t('services.wedding')}</li>
+            <li>{t('services.beauty')}</li>
+            <li>{t('services.catering')}</li>
+            <li>{t('about.feature1')}</li>
+            <li>{t('about.feature2')}</li>
+            <li>{t('about.feature3')}</li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-lg font-serif font-medium mb-6">Contact</h4>
+          <h4 className="text-lg font-serif font-medium mb-6">{t('nav.contact')}</h4>
           <ul className="space-y-4 text-sm text-white/60">
             <li className="flex items-start space-x-3">
               <MapPin size={18} className="text-gold shrink-0" />
@@ -68,7 +71,7 @@ export const Footer = () => {
       </div>
       
       <div className="container mx-auto px-6 mt-20 pt-8 border-t border-white/10 text-center text-white/40 text-xs uppercase tracking-widest">
-        <p>© {new Date().getFullYear()} L’œil ORG. Tous droits réservés.</p>
+        <p>© {new Date().getFullYear()} L’œil ORG. {t('footer.rights')}</p>
       </div>
     </footer>
   );

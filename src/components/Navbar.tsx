@@ -1,22 +1,24 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 import { Button } from './Button';
-
-const navLinks = [
-  { name: 'Accueil', path: '/' },
-  { name: 'À Propos', path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'Galerie', path: '/gallery' },
-  { name: 'Contact', path: '/contact' },
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
+
+  const navLinks = [
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.services'), path: '/services' },
+    { name: t('nav.gallery'), path: '/gallery' },
+    { name: t('nav.contact'), path: '/contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +31,10 @@ export const Navbar = () => {
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'fr' ? 'en' : 'fr');
+  };
 
   return (
     <nav className={cn(
@@ -56,20 +62,38 @@ export const Navbar = () => {
               {link.name}
             </Link>
           ))}
+          
+          <button 
+            onClick={toggleLanguage}
+            className="flex items-center space-x-1 text-xs font-bold uppercase tracking-widest text-ink hover:text-gold transition-colors"
+          >
+            <Globe size={14} />
+            <span>{language === 'fr' ? 'EN' : 'FR'}</span>
+          </button>
+
           <Link to="/contact">
             <Button size="sm" className="hidden lg:flex">
-              Devis Gratuit
+              {t('nav.quote')}
             </Button>
           </Link>
         </div>
 
         {/* Mobile Toggle */}
-        <button 
-          className="md:hidden text-ink p-2"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="flex items-center space-x-4 md:hidden">
+          <button 
+            onClick={toggleLanguage}
+            className="flex items-center space-x-1 text-xs font-bold uppercase tracking-widest text-ink"
+          >
+            <Globe size={14} />
+            <span>{language === 'fr' ? 'EN' : 'FR'}</span>
+          </button>
+          <button 
+            className="text-ink p-2"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -96,7 +120,7 @@ export const Navbar = () => {
               ))}
               <Link to="/contact" className="pt-4">
                 <Button className="w-full">
-                  Demander un devis
+                  {t('hero.cta.quote')}
                 </Button>
               </Link>
             </div>

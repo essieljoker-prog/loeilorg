@@ -3,47 +3,38 @@ import { SectionHeading } from '@/src/components/SectionHeading';
 import { Button } from '@/src/components/Button';
 import { ArrowRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const allServices = [
-  {
-    title: "Wedding Planning",
-    description: "Organisation complète de mariages : recherche de lieux, traiteur, décoration, coordination jour J.",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800",
-    features: ["Planification budgétaire", "Sélection des prestataires", "Design floral", "Gestion des invités"]
-  },
-  {
-    title: "Événements Corporatifs",
-    description: "Gala, lancements de produits, séminaires. Une image de marque renforcée par des événements prestigieux.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800",
-    features: ["Logistique complète", "Technique & Audiovisuel", "Hôtesses d'accueil", "Restauration premium"]
-  },
-  {
-    title: "Service Traiteur",
-    description: "Une gastronomie raffinée pour tous vos événements. Menus personnalisés et service d'exception.",
-    image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800",
-    features: ["Cuisine gastronomique", "Cocktails dînatoires", "Pâtisserie fine", "Service à table"]
-  },
-  {
-    title: "Maquillage & Formation",
-    description: "Maquillage professionnel pour mariées et événements. Nous proposons aussi des formations certifiantes.",
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800",
-    features: ["Maquillage mariée", "Cours d'auto-maquillage", "Formation pro", "Produits de luxe"]
-  },
-  {
-    title: "Coiffure & Soins",
-    description: "Coiffures événementielles, soins du visage, pédicure et manucure pour une beauté complète.",
-    image: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=800",
-    features: ["Chignons de mariée", "Soins hydratants", "Nail Art", "Massage relaxant"]
-  }
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Services() {
+  const { t } = useLanguage();
+
+  const allServices = [
+    {
+      title: t('services.wedding'),
+      description: t('services.weddingDesc'),
+      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800",
+      features: [t('services.weddingF1'), t('services.weddingF2'), t('services.weddingF3'), t('services.weddingF4')]
+    },
+    {
+      title: t('services.beauty'),
+      description: t('services.beautyDesc'),
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800",
+      features: [t('services.beautyF1'), t('services.beautyF2'), t('services.beautyF3'), t('services.beautyF4')]
+    },
+    {
+      title: t('services.catering'),
+      description: t('services.cateringDesc'),
+      image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800",
+      features: [t('services.cateringF1'), t('services.cateringF2'), t('services.cateringF3'), t('services.cateringF4')]
+    }
+  ];
+
   return (
     <div className="pt-32 pb-24">
       <div className="container mx-auto px-6">
         <SectionHeading 
-          title="Des Services Pensés pour Vous" 
-          subtitle="Notre Expertise" 
+          title={t('services.title')} 
+          subtitle={t('services.subtitle')} 
         />
 
         <div className="space-y-24">
@@ -84,7 +75,7 @@ export default function Services() {
                 <div className="pt-8">
                   <Link to="/contact">
                     <Button className="group">
-                      Réserver ce service <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                      {t('services.requestQuote')} <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                 </div>
