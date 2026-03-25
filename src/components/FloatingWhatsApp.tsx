@@ -1,10 +1,26 @@
 import { MessageCircle } from 'lucide-react';
-import { motion } from 'motion/react';
+
+const getWhatsAppMessage = (): string => {
+  const hour = new Date().getHours();
+
+  if (hour >= 5 && hour < 12) {
+    return "Bonjour L'Oeil org ! 👋 Je vous contacte ce matin afin d'avoir plus d'informations sur vos services.";
+  } else if (hour >= 12 && hour < 18) {
+    return "Bonjour L'Oeil org ! 👋 J'espère que vous passez une bonne journée. Je vous contacte cet après-midi afin d'avoir plus d'informations sur vos services.";
+  } else if (hour >= 18 && hour < 22) {
+    return "Bonsoir L'Oeil org ! 👋 Je vous contacte ce soir afin d'avoir plus d'informations sur vos services.";
+  } else {
+    return "Bonsoir L'Oeil org ! 👋 Je vous contacte afin d'avoir plus d'informations sur vos services.";
+  }
+};
 
 export const FloatingWhatsApp = () => {
+  const message = encodeURIComponent(getWhatsAppMessage());
+  const whatsappUrl = `https://wa.me/22946564301?text=${message}`;
+
   return (
-    <a
-      href="https://wa.me/22946564301"
+    
+      href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contact us on WhatsApp"
