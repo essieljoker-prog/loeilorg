@@ -147,11 +147,13 @@ export default function Contact() {
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formName')}</label>
+                    <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formName')}</label>
                     <input 
+                      id="name"
                       type="text" 
                       name="name"
                       required
+                      aria-required="true"
                       value={formState.name}
                       onChange={handleChange}
                       className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all" 
@@ -159,11 +161,13 @@ export default function Contact() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formEmail')}</label>
+                    <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formEmail')}</label>
                     <input 
+                      id="email"
                       type="email" 
                       name="email"
                       required
+                      aria-required="true"
                       value={formState.email}
                       onChange={handleChange}
                       className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all" 
@@ -173,8 +177,9 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formType')}</label>
+                  <label htmlFor="type" className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formType')}</label>
                   <select 
+                    id="type"
                     name="type"
                     value={formState.type}
                     onChange={handleChange}
@@ -188,10 +193,12 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formMessage')}</label>
+                  <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formMessage')}</label>
                   <textarea 
+                    id="message"
                     name="message"
                     required
+                    aria-required="true"
                     rows={5} 
                     value={formState.message}
                     onChange={handleChange}
@@ -214,13 +221,14 @@ export default function Contact() {
         {/* Map Placeholder */}
         <div className="mt-24 rounded-[3rem] overflow-hidden h-[400px] shadow-lg relative grayscale hover:grayscale-0 transition-all duration-700">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126892.8520334863!2d2.34842138671875!3d6.367695300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023550499878197%3A0x7d28701625902b48!2sCotonou!5e0!3m2!1sen!2sbj!4v1647432000000!5m2!1sen!2sbj" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.044158943485!2d2.420177411030932!3d6.376383593588724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10235502adbb6f19%3A0xbad2c5a7e383a673!2sL'oeilOrg!5e0!3m2!1sen!2sbj!4v1711375200000!5m2!1sen!2sbj" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
             allowFullScreen 
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            title="L'oeil ORG Location Map"
           ></iframe>
         </div>
       </div>

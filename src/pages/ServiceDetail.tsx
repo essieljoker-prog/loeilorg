@@ -97,8 +97,8 @@ export default function ServiceDetail() {
             </div>
 
             <div className="pt-8">
-              <Link to="/contact">
-                <Button size="lg">
+              <Link to="/contact" aria-label={`${t(`services.${data.key}.cta`)} for ${t(`services.${data.key}.fullTitle`)}`}>
+                <Button size="lg" tabIndex={-1}>
                   {t(`services.${data.key}.cta`)}
                 </Button>
               </Link>

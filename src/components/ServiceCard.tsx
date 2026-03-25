@@ -57,8 +57,8 @@ export const ServiceCard = ({ title, description, image, index, slug }: ServiceC
         <p className="text-white/70 text-sm md:text-base mb-6 line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
           {description}
         </p>
-        <Link to={`/services/${slug}`}>
-          <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-ink">
+        <Link to={`/services/${slug}`} aria-label={`${t('services.learnMore')} ${title}`}>
+          <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-ink" tabIndex={-1}>
             {t('services.learnMore')} <ArrowRight size={16} className="ml-2" />
           </Button>
         </Link>

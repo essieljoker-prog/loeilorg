@@ -42,7 +42,7 @@ export const Navbar = () => {
       isScrolled ? 'glass py-8 shadow-md' : 'bg-transparent py-6'
     )}>
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center group">
+        <Link to="/" className="flex items-center group" aria-label="L'oeil ORG - Home">
           <span className="text-2xl md:text-3xl font-serif font-bold tracking-tighter flex items-center transition-colors duration-300">
             <span className="text-brand-brown">L'</span>
             <span className="text-brand-orange italic">oeil</span>
@@ -54,11 +54,12 @@ export const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-8" role="navigation">
           {navLinks.map((link) => (
             <Link 
               key={link.path} 
               to={link.path}
+              aria-current={location.pathname === link.path ? 'page' : undefined}
               className={cn(
                 'text-sm font-medium tracking-wide uppercase transition-colors hover:text-gold',
                 location.pathname === link.path ? 'text-gold' : (isScrolled ? 'text-ink' : 'text-white')

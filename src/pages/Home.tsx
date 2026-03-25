@@ -153,7 +153,7 @@ export default function Home() {
               <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
                 <img 
                   src="https://images.unsplash.com/photo-1522673607200-1648832cee98?auto=format&fit=crop&q=80&w=800" 
-                  alt="Founder"
+                  alt="L'oeil ORG Founder and Team working on an event"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -251,10 +251,10 @@ export default function Home() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&q=80&w=600"
+              { url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=600", alt: "Elegant wedding table setting with white flowers" },
+              { url: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=600", alt: "Bride and groom sharing a moment" },
+              { url: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=600", alt: "Professional makeup artist at work" },
+              { url: "https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&q=80&w=600", alt: "Gourmet catering presentation" }
             ].map((img, i) => (
               <motion.div
                 key={i}
@@ -265,8 +265,8 @@ export default function Home() {
                 className="aspect-square rounded-2xl overflow-hidden group cursor-pointer"
               >
                 <img 
-                  src={img} 
-                  alt={`Gallery ${i}`} 
+                  src={img.url} 
+                  alt={img.alt} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />

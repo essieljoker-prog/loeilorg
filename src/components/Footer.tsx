@@ -9,7 +9,7 @@ export const Footer = () => {
     <footer className="bg-ink text-white pt-20 pb-10">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <div className="space-y-6">
-          <Link to="/" className="text-3xl font-serif font-bold tracking-tighter flex items-center">
+          <Link to="/" className="text-3xl font-serif font-bold tracking-tighter flex items-center" aria-label="L'oeil ORG - Home">
             <span className="text-white">L'</span>
             <span className="text-brand-orange italic">oeil</span>
             <span className="ml-2 bg-brand-orange text-ink px-2 py-0.5 text-xs rounded font-sans font-black tracking-widest uppercase">ORG</span>
@@ -18,13 +18,13 @@ export const Footer = () => {
             {t('footer.tagline')}
           </p>
           <div className="flex items-center space-x-4">
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300">
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300" aria-label="Follow us on Instagram">
               <Instagram size={18} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300">
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300" aria-label="Follow us on Facebook">
               <Facebook size={18} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300">
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300" aria-label="Follow us on Twitter">
               <Twitter size={18} />
             </a>
           </div>

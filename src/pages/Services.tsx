@@ -81,8 +81,8 @@ export default function Services() {
                   ))}
                 </div>
                 <div className="pt-8">
-                  <Link to={`/services/${service.slug}`}>
-                    <Button className="group">
+                  <Link to={`/services/${service.slug}`} aria-label={`${t('services.learnMore')} ${service.title}`}>
+                    <Button className="group" tabIndex={-1}>
                       {t('services.learnMore')} <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>

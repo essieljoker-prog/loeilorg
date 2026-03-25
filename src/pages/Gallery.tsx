@@ -66,22 +66,25 @@ export default function Gallery() {
         <motion.div 
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          role="region"
+          aria-label="Gallery Grid"
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item) => (
-              <motion.div
+              <motion.button
                 key={item.id}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className="aspect-[4/5] rounded-3xl overflow-hidden group cursor-pointer relative"
+                className="aspect-[4/5] rounded-3xl overflow-hidden group cursor-pointer relative w-full text-left focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-4"
                 onClick={() => setSelectedImage(item.image)}
+                aria-label={`View ${item.category} image ${item.id}`}
               >
                 <img 
                   src={item.image} 
-                  alt={item.category} 
+                  alt={`${item.category} event photography`} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
@@ -90,7 +93,7 @@ export default function Gallery() {
                     {t('gallery.view')}
                   </span>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </AnimatePresence>
         </motion.div>
@@ -104,10 +107,17 @@ export default function Gallery() {
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 md:p-12"
               onClick={() => setSelectedImage(null)}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Image Lightbox"
             >
               <button 
-                className="absolute top-8 right-8 text-white hover:text-gold transition-colors"
-                onClick={() => setSelectedImage(null)}
+                className="absolute top-8 right-8 text-white hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded-full p-2"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImage(null);
+                }}
+                aria-label="Close lightbox"
               >
                 <X size={40} />
               </button>
@@ -115,8 +125,10 @@ export default function Gallery() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 src={selectedImage} 
+                alt="Full size gallery image"
                 className="max-w-full max-h-full object-contain rounded-xl"
                 referrerPolicy="no-referrer"
+                onClick={(e) => e.stopPropagation()}
               />
             </motion.div>
           )}
