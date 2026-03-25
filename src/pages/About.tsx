@@ -35,7 +35,7 @@ export default function About() {
                 <p className="text-xs uppercase tracking-widest font-bold text-ink/50">{t('about.exp')}</p>
               </div>
               <div className="space-y-2">
-                <h4 className="text-4xl font-serif text-gold">500+</h4>
+                <h4 className="text-4xl font-serif text-gold">200+</h4>
                 <p className="text-xs uppercase tracking-widest font-bold text-ink/50">{t('about.success')}</p>
               </div>
             </div>
