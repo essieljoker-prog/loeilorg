@@ -1,14 +1,55 @@
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { SectionHeading } from '@/src/components/SectionHeading';
-import { Button } from '@/src/components/Button';
-import { Mail, Phone, MapPin, MessageCircle, Instagram, Facebook, Twitter } from 'lucide-react';
+import { Button } from '../components/Button';
+import { Mail, Phone, MapPin, MessageCircle, Instagram, Facebook, Twitter, CheckCircle } from 'lucide-react';
+import { SEO } from '@/src/components/SEO';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Contact() {
   const { t } = useLanguage();
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    type: t('services.wedding'),
+    message: ''
+  });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic Client-side Validation
+    if (!formState.name || !formState.email || !formState.message) {
+      alert('Veuillez remplir tous les champs obligatoires.');
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
+      alert('Veuillez entrer une adresse email valide.');
+      return;
+    }
+
+    setStatus('submitting');
+    
+    // Simulate API call
+    setTimeout(() => {
+      setStatus('success');
+      setFormState({ name: '', email: '', type: t('services.wedding'), message: '' });
+    }, 1500);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormState(prev => ({ ...prev, [name]: value }));
+  };
 
   return (
     <div className="pt-32 pb-24">
+      <SEO 
+        title={t('seo.contact.title')} 
+        description={t('seo.contact.description')} 
+      />
       <div className="container mx-auto px-6">
         <SectionHeading 
           title={t('contact.title')} 
@@ -18,6 +59,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Info */}
           <div className="space-y-12">
+            {/* ... existing info content ... */}
             <div className="space-y-6">
               <h3 className="text-3xl font-serif text-ink">{t('contact.infoTitle')}</h3>
               <p className="text-ink/60 leading-relaxed">
@@ -32,7 +74,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm uppercase tracking-widest text-ink/40 mb-1">{t('contact.phone')}</h4>
-                  <p className="text-lg font-medium">+33 1 23 45 67 89</p>
+                  <p className="text-lg font-medium">+229 46 56 43 01</p>
                 </div>
               </div>
 
@@ -42,7 +84,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm uppercase tracking-widest text-ink/40 mb-1">{t('contact.email')}</h4>
-                  <p className="text-lg font-medium">contact@loeilorg.com</p>
+                  <p className="text-lg font-medium">loeilorg@gmail.com</p>
                 </div>
               </div>
 
@@ -52,7 +94,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm uppercase tracking-widest text-ink/40 mb-1">{t('contact.address')}</h4>
-                  <p className="text-lg font-medium">123 Avenue de l'Élégance, Paris</p>
+                  <p className="text-lg font-medium">Cotonou, Bénin</p>
                 </div>
               </div>
             </div>
@@ -74,7 +116,7 @@ export default function Contact() {
                 <h4 className="text-xl font-serif">{t('contact.quickContact')}</h4>
               </div>
               <p className="text-sm text-ink/60 mb-6">{t('contact.whatsappDesc')}</p>
-              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/22946564301" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full bg-[#25D366] hover:bg-[#128C7E] border-none">
                   {t('contact.whatsappBtn')}
                 </Button>
@@ -88,47 +130,91 @@ export default function Contact() {
             animate={{ opacity: 1, x: 0 }}
             className="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-beige"
           >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formName')}</label>
-                  <input type="text" className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all" placeholder={t('contact.formNamePlaceholder')} />
+            {status === 'success' ? (
+              <div className="h-full flex flex-col items-center justify-center text-center space-y-6 py-12">
+                <div className="w-20 h-20 bg-gold/10 rounded-full flex items-center justify-center text-gold">
+                  <CheckCircle size={48} />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formEmail')}</label>
-                  <input type="email" className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all" placeholder={t('contact.formEmailPlaceholder')} />
+                <h3 className="text-3xl font-serif">{t('contact.successTitle') || 'Message Envoyé'}</h3>
+                <p className="text-ink/60 max-w-xs mx-auto">
+                  {t('contact.successDesc') || 'Merci pour votre message. Nous vous répondrons dans les plus brefs délais.'}
+                </p>
+                <Button onClick={() => setStatus('idle')} variant="outline" type="button">
+                  {t('contact.sendAnother') || 'Envoyer un autre message'}
+                </Button>
+              </div>
+            ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formName')}</label>
+                    <input 
+                      type="text" 
+                      name="name"
+                      required
+                      value={formState.name}
+                      onChange={handleChange}
+                      className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all" 
+                      placeholder={t('contact.formNamePlaceholder')} 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formEmail')}</label>
+                    <input 
+                      type="email" 
+                      name="email"
+                      required
+                      value={formState.email}
+                      onChange={handleChange}
+                      className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all" 
+                      placeholder={t('contact.formEmailPlaceholder')} 
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formType')}</label>
-                <select className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all appearance-none">
-                  <option>{t('services.wedding')}</option>
-                  <option>{t('services.beauty')}</option>
-                  <option>{t('services.catering')}</option>
-                  <option>{t('contact.typeOther')}</option>
-                </select>
-              </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formType')}</label>
+                  <select 
+                    name="type"
+                    value={formState.type}
+                    onChange={handleChange}
+                    className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all appearance-none"
+                  >
+                    <option>{t('services.wedding')}</option>
+                    <option>{t('services.beauty')}</option>
+                    <option>{t('services.catering')}</option>
+                    <option>{t('contact.typeOther')}</option>
+                  </select>
+                </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formMessage')}</label>
-                <textarea rows={5} className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all resize-none" placeholder={t('contact.formMessagePlaceholder')} />
-              </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-widest text-ink/40 ml-1">{t('contact.formMessage')}</label>
+                  <textarea 
+                    name="message"
+                    required
+                    rows={5} 
+                    value={formState.message}
+                    onChange={handleChange}
+                    className="w-full bg-beige/50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-gold/20 transition-all resize-none" 
+                    placeholder={t('contact.formMessagePlaceholder')} 
+                  />
+                </div>
 
-              <Button size="lg" className="w-full">
-                {t('contact.formSubmit')}
-              </Button>
-              <p className="text-center text-[10px] text-ink/40 uppercase tracking-widest">
-                {t('contact.formNote')}
-              </p>
-            </form>
+                <Button size="lg" className="w-full" disabled={status === 'submitting'}>
+                  {status === 'submitting' ? t('contact.formSubmitting') || 'Envoi...' : t('contact.formSubmit')}
+                </Button>
+                <p className="text-center text-[10px] text-ink/40 uppercase tracking-widest">
+                  {t('contact.formNote')}
+                </p>
+              </form>
+            )}
           </motion.div>
         </div>
 
         {/* Map Placeholder */}
         <div className="mt-24 rounded-[3rem] overflow-hidden h-[400px] shadow-lg relative grayscale hover:grayscale-0 transition-all duration-700">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.292292615509614!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca97ef0867b24!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1647432000000!5m2!1sen!2sfr" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126892.8520334863!2d2.34842138671875!3d6.367695300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023550499878197%3A0x7d28701625902b48!2sCotonou!5e0!3m2!1sen!2sbj!4v1647432000000!5m2!1sen!2sbj" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 

@@ -5,14 +5,31 @@
   --font-serif: "Cormorant Garamond", serif;
   --font-sans: "Inter", sans-serif;
   
-  --color-gold: #D4AF37;
-  --color-gold-light: #F4EBD0;
-  --color-beige: #F5F2ED;
+  --color-brand-orange: #F27D26;
+  --color-brand-brown: #3D1C10;
+  --color-brand-yellow: #FDB813;
+  --color-gold: var(--color-brand-orange);
+  --color-gold-light: #FFF5EB;
+  --color-beige: #FDFBF9;
+  --color-beige-light: #F9F7F5;
   --color-pink-soft: #FFF0F5;
   --color-ink: #1A1A1A;
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-beige text-ink font-sans antialiased;
   }

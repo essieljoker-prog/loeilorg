@@ -3,6 +3,7 @@ import { SectionHeading } from '@/src/components/SectionHeading';
 import { Button } from '@/src/components/Button';
 import { ArrowRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '@/src/components/SEO';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Services() {
@@ -10,18 +11,21 @@ export default function Services() {
 
   const allServices = [
     {
+      slug: 'wedding',
       title: t('services.wedding'),
       description: t('services.weddingDesc'),
       image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800",
       features: [t('services.weddingF1'), t('services.weddingF2'), t('services.weddingF3'), t('services.weddingF4')]
     },
     {
+      slug: 'beauty',
       title: t('services.beauty'),
       description: t('services.beautyDesc'),
       image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800",
       features: [t('services.beautyF1'), t('services.beautyF2'), t('services.beautyF3'), t('services.beautyF4')]
     },
     {
+      slug: 'catering',
       title: t('services.catering'),
       description: t('services.cateringDesc'),
       image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800",
@@ -31,6 +35,10 @@ export default function Services() {
 
   return (
     <div className="pt-32 pb-24">
+      <SEO 
+        title={t('seo.services.title')} 
+        description={t('seo.services.description')} 
+      />
       <div className="container mx-auto px-6">
         <SectionHeading 
           title={t('services.title')} 
@@ -73,9 +81,9 @@ export default function Services() {
                   ))}
                 </div>
                 <div className="pt-8">
-                  <Link to="/contact">
+                  <Link to={`/services/${service.slug}`}>
                     <Button className="group">
-                      {t('services.requestQuote')} <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                      {t('services.learnMore')} <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                 </div>
@@ -83,6 +91,22 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
+
+        {/* Global CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-32 text-center bg-beige/30 rounded-[3rem] p-12 md:p-20"
+        >
+          <h2 className="text-3xl md:text-4xl font-serif text-ink mb-6">{t('cta.title')}</h2>
+          <p className="text-lg text-ink/60 mb-10 max-w-2xl mx-auto">{t('cta.text')}</p>
+          <Link to="/contact">
+            <Button size="lg">
+              {t('nav.quote')}
+            </Button>
+          </Link>
+        </motion.div>
       </div>
     </div>
   );

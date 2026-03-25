@@ -39,12 +39,17 @@ export const Navbar = () => {
   return (
     <nav className={cn(
       'fixed top-0 left-0 w-full z-50 transition-all duration-500',
-      isScrolled ? 'glass py-3 shadow-sm' : 'bg-transparent py-6'
+      isScrolled ? 'glass py-8 shadow-md' : 'bg-transparent py-6'
     )}>
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-2xl md:text-3xl font-serif font-bold tracking-tighter text-ink">
-            L’œil <span className="text-gold">ORG</span>
+        <Link to="/" className="flex items-center group">
+          <span className="text-2xl md:text-3xl font-serif font-bold tracking-tighter flex items-center transition-colors duration-300">
+            <span className="text-brand-brown">L'</span>
+            <span className="text-brand-orange italic">oeil</span>
+            <span className={cn(
+              "ml-2 px-2 py-0.5 text-[10px] md:text-xs rounded font-sans font-black tracking-widest uppercase transition-colors duration-300",
+              "bg-brand-brown text-white"
+            )}>ORG</span>
           </span>
         </Link>
 
@@ -56,7 +61,7 @@ export const Navbar = () => {
               to={link.path}
               className={cn(
                 'text-sm font-medium tracking-wide uppercase transition-colors hover:text-gold',
-                location.pathname === link.path ? 'text-gold' : 'text-ink'
+                location.pathname === link.path ? 'text-gold' : (isScrolled ? 'text-ink' : 'text-white')
               )}
             >
               {link.name}
@@ -65,7 +70,11 @@ export const Navbar = () => {
           
           <button 
             onClick={toggleLanguage}
-            className="flex items-center space-x-1 text-xs font-bold uppercase tracking-widest text-ink hover:text-gold transition-colors"
+            aria-label={language === 'fr' ? 'Switch to English' : 'Passer en Français'}
+            className={cn(
+              "flex items-center space-x-1 text-xs font-bold uppercase tracking-widest hover:text-gold transition-colors",
+              isScrolled ? "text-ink" : "text-white"
+            )}
           >
             <Globe size={14} />
             <span>{language === 'fr' ? 'EN' : 'FR'}</span>
@@ -82,14 +91,19 @@ export const Navbar = () => {
         <div className="flex items-center space-x-4 md:hidden">
           <button 
             onClick={toggleLanguage}
-            className="flex items-center space-x-1 text-xs font-bold uppercase tracking-widest text-ink"
+            aria-label={language === 'fr' ? 'Switch to English' : 'Passer en Français'}
+            className={cn(
+              "flex items-center space-x-1 text-xs font-bold uppercase tracking-widest",
+              isScrolled ? "text-ink" : "text-white"
+            )}
           >
             <Globe size={14} />
             <span>{language === 'fr' ? 'EN' : 'FR'}</span>
           </button>
           <button 
-            className="text-ink p-2"
+            className={cn("p-2", isScrolled ? "text-ink" : "text-white")}
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>

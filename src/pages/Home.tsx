@@ -1,29 +1,36 @@
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Star, Quote, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/src/components/Button';
 import { SectionHeading } from '@/src/components/SectionHeading';
 import { ServiceCard } from '@/src/components/ServiceCard';
+import { SEO } from '@/src/components/SEO';
 import { useLanguage } from '../contexts/LanguageContext';
+import { cn } from '@/src/lib/utils';
 
 export default function Home() {
   const { t } = useLanguage();
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   const services = [
     {
-      title: "Wedding Planning",
-      description: t('services.learnMore'),
+      slug: 'wedding',
+      title: t('services.wedding'),
+      description: t('services.weddingDesc'),
       image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800"
     },
     {
-      title: t('nav.services'),
-      description: t('services.learnMore'),
-      image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800"
+      slug: 'beauty',
+      title: t('services.beauty'),
+      description: t('services.beautyDesc'),
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800"
     },
     {
-      title: "Beauté & Esthétique",
-      description: t('services.learnMore'),
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800"
+      slug: 'catering',
+      title: t('services.catering'),
+      description: t('services.cateringDesc'),
+      image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800"
     }
   ];
 
@@ -37,15 +44,49 @@ export default function Home() {
     // ... I'll simplify testimonials for the demo to use the keys I defined or just keep them as is if they are specific
   ];
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "L'œil ORG",
+    "url": "https://ais-pre-eo7cc2y3dv6mcyvlohw7gw-207514675638.europe-west2.run.app",
+    "logo": "https://ais-pre-eo7cc2y3dv6mcyvlohw7gw-207514675638.europe-west2.run.app/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+229-46-56-43-01",
+      "contactType": "customer service",
+      "areaServed": "BJ",
+      "availableLanguage": ["French", "English"]
+    },
+    "sameAs": [
+      "https://wa.me/22946564301"
+    ]
+  };
+
   return (
     <div className="overflow-hidden">
+      <SEO 
+        title={t('seo.home.title')} 
+        description={t('seo.home.description')} 
+        schema={organizationSchema}
+      />
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
+          {/* Shimmer Placeholder */}
+          {!heroLoaded && (
+            <div className="absolute inset-0 bg-ink animate-pulse flex items-center justify-center">
+              <div className="w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+            </div>
+          )}
+          
           <img 
             src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920" 
             alt="Luxury Wedding"
-            className="w-full h-full object-cover"
+            onLoad={() => setHeroLoaded(true)}
+            className={cn(
+              "w-full h-full object-cover transition-all duration-1000",
+              heroLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"
+            )}
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-black/40" />
@@ -80,7 +121,7 @@ export default function Home() {
                 {t('hero.cta.quote')}
               </Button>
             </Link>
-            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/22946564301" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg" className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-ink">
                 {t('hero.cta.whatsapp')}
               </Button>
@@ -163,7 +204,7 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-24 bg-beige">
+      <section id="services-overview" className="py-24 bg-beige">
         <div className="container mx-auto px-6">
           <SectionHeading 
             title={t('services.title')} 
@@ -177,6 +218,7 @@ export default function Home() {
                 description={service.description}
                 image={service.image}
                 index={index} 
+                slug={service.slug}
               />
             ))}
           </div>
@@ -191,7 +233,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Highlight */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section id="gallery-highlight" className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
             <SectionHeading 
@@ -235,7 +277,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-pink-soft/30">
+      <section id="testimonials" className="py-24 bg-pink-soft/30">
         <div className="container mx-auto px-6">
           <SectionHeading 
             title={t('testimonials.title')} 

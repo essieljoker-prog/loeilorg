@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { SectionHeading } from '@/src/components/SectionHeading';
 import { CheckCircle2, Heart, Award, Users } from 'lucide-react';
+import { SEO } from '@/src/components/SEO';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function About() {
@@ -8,6 +9,10 @@ export default function About() {
 
   return (
     <div className="pt-32 pb-24">
+      <SEO 
+        title={t('seo.about.title')} 
+        description={t('seo.about.description')} 
+      />
       <div className="container mx-auto px-6">
         <SectionHeading 
           title={t('about.title')} 

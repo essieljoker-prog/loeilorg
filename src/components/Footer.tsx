@@ -9,8 +9,10 @@ export const Footer = () => {
     <footer className="bg-ink text-white pt-20 pb-10">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <div className="space-y-6">
-          <Link to="/" className="text-3xl font-serif font-bold tracking-tighter">
-            L’œil <span className="text-gold">ORG</span>
+          <Link to="/" className="text-3xl font-serif font-bold tracking-tighter flex items-center">
+            <span className="text-white">L'</span>
+            <span className="text-brand-orange italic">oeil</span>
+            <span className="ml-2 bg-brand-orange text-ink px-2 py-0.5 text-xs rounded font-sans font-black tracking-widest uppercase">ORG</span>
           </Link>
           <p className="text-white/60 text-sm leading-relaxed">
             {t('footer.tagline')}
@@ -55,23 +57,24 @@ export const Footer = () => {
           <h4 className="text-lg font-serif font-medium mb-6">{t('nav.contact')}</h4>
           <ul className="space-y-4 text-sm text-white/60">
             <li className="flex items-start space-x-3">
-              <MapPin size={18} className="text-gold shrink-0" />
-              <span>123 Avenue de l'Élégance, Paris, France</span>
+              <MapPin size={18} className="text-brand-orange shrink-0" />
+              <span>Cotonou, Bénin</span>
             </li>
             <li className="flex items-center space-x-3">
-              <Phone size={18} className="text-gold shrink-0" />
-              <span>+33 1 23 45 67 89</span>
+              <Phone size={18} className="text-brand-orange shrink-0" />
+              <span>+229 46 56 43 01</span>
             </li>
             <li className="flex items-center space-x-3">
-              <Mail size={18} className="text-gold shrink-0" />
-              <span>contact@loeilorg.com</span>
+              <Mail size={18} className="text-brand-orange shrink-0" />
+              <span>loeilorg@gmail.com</span>
             </li>
           </ul>
         </div>
       </div>
       
-      <div className="container mx-auto px-6 mt-20 pt-8 border-t border-white/10 text-center text-white/40 text-xs uppercase tracking-widest">
+      <div className="container mx-auto px-6 mt-20 pt-8 border-t border-white/10 text-center text-white/40 text-[10px] uppercase tracking-widest space-y-2">
         <p>© {new Date().getFullYear()} L’œil ORG. {t('footer.rights')}</p>
+        <p className="opacity-50">RCCM : RB/COT/20 A 56910 N | IFU : 202011399913</p>
       </div>
     </footer>
   );

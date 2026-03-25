@@ -10,6 +10,18 @@ interface LanguageContextType {
 
 const translations = {
   fr: {
+    // SEO
+    'seo.home.title': 'L’œil ORG • Événements & Beauté à Cotonou, Bénin',
+    'seo.home.description': 'L’œil ORG rend vos cérémonies originales et inoubliables. Wedding Planning, Beauté, Traiteur et Événements d\'exception à Cotonou.',
+    'seo.about.title': 'À Propos de L’œil ORG • Notre Expertise Événementielle',
+    'seo.about.description': 'Découvrez l\'histoire de L’œil ORG et notre engagement pour l\'élégance et la créativité dans l\'organisation de vos événements.',
+    'seo.services.title': 'Nos Services • Mariage, Beauté et Événements • L’œil ORG',
+    'seo.services.description': 'Explorez nos services d\'exception : Wedding Planning, Maquillage, Traiteur, Décoration et bien plus pour vos moments uniques.',
+    'seo.gallery.title': 'Galerie de Réalisations • L’œil ORG • Moments d\'Exception',
+    'seo.gallery.description': 'Découvrez en images nos plus belles réalisations : mariages, séances beauté et événements organisés par L’œil ORG.',
+    'seo.contact.title': 'Contactez L’œil ORG • Devis Gratuit pour Votre Événement',
+    'seo.contact.description': 'Prêt à rendre votre événement inoubliable ? Contactez-nous pour un devis gratuit ou une consultation personnalisée.',
+
     // Navbar
     'nav.home': 'Accueil',
     'nav.about': 'À Propos',
@@ -147,8 +159,68 @@ const translations = {
     'services.cateringF4': 'Pâtisserie fine',
     
     'services.requestQuote': 'Demander un devis personnalisé',
+
+    // Service Detail - Wedding
+    'services.wedding.fullTitle': 'Organisation de Mariage de Prestige',
+    'services.wedding.fullDesc': 'Votre mariage est l\'un des jours les plus importants de votre vie. Chez L’œil ORG, nous comprenons l\'importance de chaque détail. Notre service de Wedding Planning est conçu pour vous offrir une expérience sans stress, de la conception à la réalisation finale.',
+    'services.wedding.section1Title': 'Une Approche Personnalisée',
+    'services.wedding.section1Text': 'Nous ne croyons pas aux mariages "clés en main". Chaque couple est unique, et votre célébration doit l\'être aussi. Nous prenons le temps de comprendre votre vision, vos goûts et vos priorités pour créer un événement qui vous ressemble vraiment.',
+    'services.wedding.featuresTitle': 'Ce que nous incluons',
+    'services.wedding.f1Title': 'Recherche de Lieux',
+    'services.wedding.f1Desc': 'Accès à des domaines, hôtels et espaces atypiques exclusifs.',
+    'services.wedding.f2Title': 'Sélection de Prestataires',
+    'services.wedding.f2Desc': 'Traiteurs, photographes, fleuristes et musiciens triés sur le volet.',
+    'services.wedding.f3Title': 'Design & Scénographie',
+    'services.wedding.f3Desc': 'Création d\'un univers visuel cohérent et élégant.',
+    'services.wedding.f4Title': 'Coordination Jour J',
+    'services.wedding.f4Desc': 'Présence discrète pour gérer les imprévus et le timing.',
+    'services.wedding.cta': 'Planifier mon mariage',
+
+    // Service Detail - Beauty
+    'services.beauty.fullTitle': 'Services de Beauté & Esthétique',
+    'services.beauty.fullDesc': 'L’œil ORG Beauté vous propose une gamme de services haut de gamme pour vous sublimer. Que ce soit pour votre mariage, un gala ou simplement pour vous faire plaisir, nos experts utilisent les meilleures techniques et produits.',
+    'services.beauty.section1Title': 'L\'Excellence au Service de votre Beauté',
+    'services.beauty.section1Text': 'Notre équipe de maquilleurs et coiffeurs professionnels se déplace pour vous offrir un service personnalisé. Nous travaillons sur la mise en valeur de vos traits naturels tout en respectant votre style personnel.',
+    'services.beauty.featuresTitle': 'Nos Spécialités',
+    'services.beauty.f1Title': 'Maquillage Mariée',
+    'services.beauty.f1Desc': 'Un teint parfait et un regard sublimé qui tient toute la journée.',
+    'services.beauty.f2Title': 'Coiffure Haute Couture',
+    'services.beauty.f2Desc': 'Chignons, tresses ou boucles hollywoodiennes sur mesure.',
+    'services.beauty.f3Title': 'Soins Préparatoires',
+    'services.beauty.f3Desc': 'Préparation de la peau pour un éclat maximal le jour J.',
+    'services.beauty.f4Title': 'Ateliers Beauté',
+    'services.beauty.f4Desc': 'Apprenez les gestes professionnels avec nos experts.',
+    'services.beauty.cta': 'Réserver ma séance',
+
+    // Service Detail - Catering
+    'services.catering.fullTitle': 'Gastronomie & Service Traiteur',
+    'services.catering.fullDesc': 'Le succès d\'un événement passe souvent par l\'assiette. L’œil ORG collabore avec les meilleurs chefs pour vous proposer une cuisine inventive, savoureuse et magnifiquement présentée.',
+    'services.catering.section1Title': 'L\'Art de la Table',
+    'services.catering.section1Text': 'Du cocktail dînatoire au dîner assis de prestige, nous adaptons nos menus à vos envies et aux contraintes alimentaires de vos invités. La qualité des produits est notre priorité absolue.',
+    'services.catering.featuresTitle': 'Nos Offres Gourmandes',
+    'services.catering.f1Title': 'Cocktails Créatifs',
+    'services.catering.f1Desc': 'Pièces cocktails originales et animations culinaires en direct.',
+    'services.catering.f2Title': 'Dîners Gastronomiques',
+    'services.catering.f2Desc': 'Menus élaborés avec des produits frais et de saison.',
+    'services.catering.f3Title': 'Buffets Thématiques',
+    'services.catering.f3Desc': 'Une présentation spectaculaire pour une convivialité maximale.',
+    'services.catering.f4Title': 'Bar à Desserts',
+    'services.catering.f4Desc': 'Une fin de repas sucrée et élégante qui marquera les esprits.',
+    'services.catering.cta': 'Demander un menu',
   },
   en: {
+    // SEO
+    'seo.home.title': 'L’œil ORG • Events & Beauty in Cotonou, Benin',
+    'seo.home.description': 'L’œil ORG makes your ceremonies original and unforgettable. Wedding Planning, Beauty, Catering and exceptional events in Cotonou.',
+    'seo.about.title': 'About L’œil ORG • Our Event Expertise',
+    'seo.about.description': 'Discover the history of L’œil ORG and our commitment to elegance and creativity in organizing your events.',
+    'seo.services.title': 'Our Services • Wedding, Beauty and Events • L’œil ORG',
+    'seo.services.description': 'Explore our exceptional services: Wedding Planning, Makeup, Catering, Decoration and more for your unique moments.',
+    'seo.gallery.title': 'Portfolio Gallery • L’œil ORG • Exceptional Moments',
+    'seo.gallery.description': 'Discover in images our most beautiful achievements: weddings, beauty sessions and events organized by L’œil ORG.',
+    'seo.contact.title': 'Contact L’œil ORG • Free Quote for Your Event',
+    'seo.contact.description': 'Ready to make your event unforgettable? Contact us for a free quote or a personalized consultation.',
+
     // Navbar
     'nav.home': 'Home',
     'nav.about': 'About',
@@ -286,6 +358,54 @@ const translations = {
     'services.cateringF4': 'Fine pastry',
     
     'services.requestQuote': 'Request a personalized quote',
+
+    // Service Detail - Wedding
+    'services.wedding.fullTitle': 'Prestige Wedding Planning',
+    'services.wedding.fullDesc': 'Your wedding is one of the most important days of your life. At L’œil ORG, we understand the importance of every detail. Our Wedding Planning service is designed to offer you a stress-free experience, from conception to final realization.',
+    'services.wedding.section1Title': 'A Personalized Approach',
+    'services.wedding.section1Text': 'We don\'t believe in "turnkey" weddings. Every couple is unique, and your celebration should be too. We take the time to understand your vision, tastes, and priorities to create an event that truly reflects you.',
+    'services.wedding.featuresTitle': 'What we include',
+    'services.wedding.f1Title': 'Venue Sourcing',
+    'services.wedding.f1Desc': 'Access to exclusive estates, hotels, and atypical spaces.',
+    'services.wedding.f2Title': 'Vendor Selection',
+    'services.wedding.f2Desc': 'Hand-picked caterers, photographers, florists, and musicians.',
+    'services.wedding.f3Title': 'Design & Scenography',
+    'services.wedding.f3Desc': 'Creation of a coherent and elegant visual universe.',
+    'services.wedding.f4Title': 'D-Day Coordination',
+    'services.wedding.f4Desc': 'Discreet presence to manage unexpected events and timing.',
+    'services.wedding.cta': 'Plan my wedding',
+
+    // Service Detail - Beauty
+    'services.beauty.fullTitle': 'Beauty & Aesthetic Services',
+    'services.beauty.fullDesc': 'L’œil ORG Beauty offers a range of high-end services to enhance your look. Whether it\'s for your wedding, a gala, or just to treat yourself, our experts use the best techniques and products.',
+    'services.beauty.section1Title': 'Excellence at the Service of your Beauty',
+    'services.beauty.section1Text': 'Our team of professional makeup artists and hairstylists travels to offer you a personalized service. We work on enhancing your natural features while respecting your personal style.',
+    'services.beauty.featuresTitle': 'Our Specialties',
+    'services.beauty.f1Title': 'Bridal Makeup',
+    'services.beauty.f1Desc': 'A perfect complexion and enhanced eyes that last all day.',
+    'services.beauty.f2Title': 'Haute Couture Hairstyling',
+    'services.beauty.f2Desc': 'Custom buns, braids, or Hollywood curls.',
+    'services.beauty.f3Title': 'Preparatory Care',
+    'services.beauty.f3Desc': 'Skin preparation for maximum glow on the big day.',
+    'services.beauty.f4Title': 'Beauty Workshops',
+    'services.beauty.f4Desc': 'Learn professional gestures with our experts.',
+    'services.beauty.cta': 'Book my session',
+
+    // Service Detail - Catering
+    'services.catering.fullTitle': 'Gastronomy & Catering Service',
+    'services.catering.fullDesc': 'The success of an event often depends on what\'s on the plate. L’œil ORG collaborates with the best chefs to offer you inventive, tasty, and beautifully presented cuisine.',
+    'services.catering.section1Title': 'The Art of the Table',
+    'services.catering.section1Text': 'From cocktail parties to prestige sit-down dinners, we adapt our menus to your desires and your guests\' dietary constraints. Product quality is our absolute priority.',
+    'services.catering.featuresTitle': 'Our Gourmet Offers',
+    'services.catering.f1Title': 'Creative Cocktails',
+    'services.catering.f1Desc': 'Original cocktail pieces and live culinary animations.',
+    'services.catering.f2Title': 'Gourmet Dinners',
+    'services.catering.f2Desc': 'Menus prepared with fresh and seasonal products.',
+    'services.catering.f3Title': 'Thematic Buffets',
+    'services.catering.f3Desc': 'A spectacular presentation for maximum conviviality.',
+    'services.catering.f4Title': 'Dessert Bar',
+    'services.catering.f4Desc': 'A sweet and elegant end to the meal that will leave a lasting impression.',
+    'services.catering.cta': 'Request a menu',
   }
 };
 

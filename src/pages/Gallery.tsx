@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SectionHeading } from '@/src/components/SectionHeading';
 import { X } from 'lucide-react';
+import { SEO } from '@/src/components/SEO';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Gallery() {
@@ -34,6 +35,10 @@ export default function Gallery() {
 
   return (
     <div className="pt-32 pb-24">
+      <SEO 
+        title={t('seo.gallery.title')} 
+        description={t('seo.gallery.description')} 
+      />
       <div className="container mx-auto px-6">
         <SectionHeading 
           title={t('gallery.title')} 
