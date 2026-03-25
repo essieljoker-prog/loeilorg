@@ -74,7 +74,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm uppercase tracking-widest text-ink/40 mb-1">{t('contact.phone')}</h4>
-                  <p className="text-lg font-medium">+229 01 46 56 43 01</p>
+                  <p className="text-lg font-medium">+229 46 56 43 01</p>
                 </div>
               </div>
 

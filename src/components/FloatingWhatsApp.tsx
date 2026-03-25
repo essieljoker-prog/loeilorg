@@ -1,4 +1,5 @@
 import { MessageCircle } from 'lucide-react';
+import { motion } from 'motion/react';
 
 const getWhatsAppMessage = (): string => {
   const hour = new Date().getHours();
@@ -19,7 +20,11 @@ export const FloatingWhatsApp = () => {
   const whatsappUrl = `https://wa.me/22946564301?text=${message}`;
 
   return (
-    
+    <motion.a
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
@@ -31,6 +36,6 @@ export const FloatingWhatsApp = () => {
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
         <span className="relative inline-flex rounded-full h-4 w-4 bg-white"></span>
       </span>
-    </a>
+    </motion.a>
   );
 };
