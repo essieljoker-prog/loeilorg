@@ -7,11 +7,32 @@ import { useLanguage } from '../contexts/LanguageContext';
 export default function About() {
   const { t } = useLanguage();
 
+  const siteUrl = 'https://ais-pre-eo7cc2y3dv6mcyvlohw7gw-207514675638.europe-west2.run.app';
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": t('nav.home'),
+        "item": `${siteUrl}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t('nav.about'),
+        "item": `${siteUrl}/about`
+      }
+    ]
+  };
+
   return (
     <div className="pt-32 pb-24">
       <SEO 
         title={t('seo.about.title')} 
         description={t('seo.about.description')} 
+        schema={breadcrumbSchema}
       />
       <div className="container mx-auto px-6">
         <SectionHeading 
@@ -46,7 +67,7 @@ export default function About() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-square rounded-full overflow-hidden border-8 border-white shadow-2xl">
+            <div className="aspect-square rounded-full overflow-hidden border-8 border-card shadow-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800" 
                 alt="About us" 
@@ -66,7 +87,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white p-12 rounded-[2rem] shadow-sm border border-beige"
+            className="bg-card p-12 rounded-[2rem] shadow-sm border border-beige"
           >
             <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center text-gold mb-8">
               <Heart size={32} />
@@ -81,7 +102,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="bg-white p-12 rounded-[2rem] shadow-sm border border-beige"
+            className="bg-card p-12 rounded-[2rem] shadow-sm border border-beige"
           >
             <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center text-gold mb-8">
               <Award size={32} />
@@ -94,13 +115,13 @@ export default function About() {
         </div>
 
         {/* Why Choose Us */}
-        <div className="bg-ink text-white rounded-[3rem] p-12 md:p-20 overflow-hidden relative">
+        <div className="bg-footer-bg text-footer-text rounded-[3rem] p-12 md:p-20 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
           <div className="relative z-10">
             <SectionHeading 
               title={t('about.whyTitle')} 
               subtitle={t('about.whySubtitle')} 
-              className="text-white"
+              className="text-footer-text"
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
               {[

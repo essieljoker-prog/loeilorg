@@ -1,6 +1,6 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { CheckCircle2, ArrowLeft, Calendar, User, Utensils } from 'lucide-react';
+import { CheckCircle2, ArrowLeft, Calendar, User, Utensils, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Button } from '@/src/components/Button';
 import { SEO } from '@/src/components/SEO';
@@ -34,14 +34,86 @@ export default function ServiceDetail() {
   const data = serviceData[slug as keyof typeof serviceData];
   const Icon = data.icon;
 
+  const siteUrl = 'https://ais-pre-eo7cc2y3dv6mcyvlohw7gw-207514675638.europe-west2.run.app';
+  
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": t(`services.${data.key}.fullTitle`),
+    "description": t(`services.${data.key}.fullDesc`),
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "L’œil ORG",
+      "url": siteUrl,
+      "logo": "https://storage.googleapis.com/static.mira.app/app-assets/eo7cc2y3dv6mcyvlohw7gw/input_file_0.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cotonou",
+        "addressCountry": "BJ"
+      }
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Benin"
+    },
+    "image": data.image
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": t('nav.home'),
+        "item": `${siteUrl}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t('nav.services'),
+        "item": `${siteUrl}/services`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": t(`services.${data.key}.fullTitle`),
+        "item": `${siteUrl}/services/${slug}`
+      }
+    ]
+  };
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
+  };
+
   return (
     <div className="pt-32 pb-24">
       <SEO 
-        title={`${t(`services.${data.key}.fullTitle`)} • L’œil ORG`}
-        description={t(`services.${data.key}.fullDesc`)}
+        title={t(`seo.services.${data.key}.title`)}
+        description={t(`seo.services.${data.key}.description`)}
+        schema={combinedSchema}
       />
 
       <div className="container mx-auto px-6">
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-[0.2em] text-ink/40">
+            <li>
+              <Link to="/" className="hover:text-gold transition-colors">{t('nav.home')}</Link>
+            </li>
+            <li className="flex items-center space-x-2">
+              <ChevronRight size={10} className="text-gold/30" />
+              <Link to="/services" className="hover:text-gold transition-colors">{t('nav.services')}</Link>
+            </li>
+            <li className="flex items-center space-x-2">
+              <ChevronRight size={10} className="text-gold/30" />
+              <span className="text-gold" aria-current="page">{t(`services.${data.key}.fullTitle`)}</span>
+            </li>
+          </ol>
+        </nav>
+
         <Link 
           to="/services" 
           className="inline-flex items-center text-gold hover:text-gold-dark transition-colors mb-8 group"

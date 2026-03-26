@@ -29,7 +29,7 @@ export const ServiceCard = ({ title, description, image, index, slug }: ServiceC
         delay: index * 0.15,
         ease: [0.21, 0.47, 0.32, 0.98] 
       }}
-      className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700"
+      className="group relative bg-card rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700"
     >
       <div className="aspect-[4/5] overflow-hidden relative">
         {/* Shimmer Placeholder */}
@@ -49,7 +49,7 @@ export const ServiceCard = ({ title, description, image, index, slug }: ServiceC
           )}
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
       </div>
       
       <div className="absolute bottom-0 left-0 w-full p-8 md:p-10 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-out">

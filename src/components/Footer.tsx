@@ -6,25 +6,27 @@ export const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-ink text-white pt-20 pb-10">
+    <footer className="bg-footer-bg text-footer-text pt-20 pb-10 transition-colors duration-300">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <div className="space-y-6">
-          <Link to="/" className="text-3xl font-serif font-bold tracking-tighter flex items-center" aria-label="L'oeil ORG - Home">
-            <span className="text-white">L'</span>
-            <span className="text-brand-orange italic">oeil</span>
-            <span className="ml-2 bg-brand-orange text-ink px-2 py-0.5 text-xs rounded font-sans font-black tracking-widest uppercase">ORG</span>
+          <Link to="/" className="flex items-center group" aria-label="L'oeil ORG - Home">
+            <img 
+              src="https://storage.googleapis.com/static.mira.app/app-assets/eo7cc2y3dv6mcyvlohw7gw/input_file_0.png"
+              alt="L'oeil ORG Logo"
+              className="h-12 w-auto object-contain"
+            />
           </Link>
-          <p className="text-white/60 text-sm leading-relaxed">
+          <p className="text-footer-text/60 text-sm leading-relaxed">
             {t('footer.tagline')}
           </p>
           <div className="flex items-center space-x-4">
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300" aria-label="Follow us on Instagram">
+            <a href="#" className="w-10 h-10 rounded-full border border-footer-text/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300" aria-label="Follow us on Instagram">
               <Instagram size={18} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300" aria-label="Follow us on Facebook">
+            <a href="#" className="w-10 h-10 rounded-full border border-footer-text/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300" aria-label="Follow us on Facebook">
               <Facebook size={18} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300" aria-label="Follow us on Twitter">
+            <a href="#" className="w-10 h-10 rounded-full border border-footer-text/10 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300" aria-label="Follow us on Twitter">
               <Twitter size={18} />
             </a>
           </div>
@@ -32,7 +34,7 @@ export const Footer = () => {
 
         <div>
           <h4 className="text-lg font-serif font-medium mb-6">{t('footer.quickLinks')}</h4>
-          <ul className="space-y-4 text-sm text-white/60">
+          <ul className="space-y-4 text-sm text-footer-text/60">
             <li><Link to="/" className="hover:text-gold transition-colors">{t('nav.home')}</Link></li>
             <li><Link to="/about" className="hover:text-gold transition-colors">{t('nav.about')}</Link></li>
             <li><Link to="/services" className="hover:text-gold transition-colors">{t('nav.services')}</Link></li>
@@ -43,7 +45,7 @@ export const Footer = () => {
 
         <div>
           <h4 className="text-lg font-serif font-medium mb-6">{t('nav.services')}</h4>
-          <ul className="space-y-4 text-sm text-white/60">
+          <ul className="space-y-4 text-sm text-footer-text/60">
             <li>{t('services.wedding')}</li>
             <li>{t('services.beauty')}</li>
             <li>{t('services.catering')}</li>
@@ -55,7 +57,7 @@ export const Footer = () => {
 
         <div>
           <h4 className="text-lg font-serif font-medium mb-6">{t('nav.contact')}</h4>
-          <ul className="space-y-4 text-sm text-white/60">
+          <ul className="space-y-4 text-sm text-footer-text/60">
             <li className="flex items-start space-x-3">
               <MapPin size={18} className="text-brand-orange shrink-0" />
               <span>Cotonou, Bénin</span>
@@ -72,7 +74,7 @@ export const Footer = () => {
         </div>
       </div>
       
-      <div className="container mx-auto px-6 mt-20 pt-8 border-t border-white/10 text-center text-white/40 text-[10px] uppercase tracking-widest space-y-2">
+      <div className="container mx-auto px-6 mt-20 pt-8 border-t border-footer-text/10 text-center text-footer-text/40 text-[10px] uppercase tracking-widest space-y-2">
         <p>© {new Date().getFullYear()} L’œil ORG. {t('footer.rights')}</p>
         <p className="opacity-50">RCCM : RB/COT/20 A 56910 N | IFU : 202011399913</p>
       </div>

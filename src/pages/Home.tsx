@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Star, Quote, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/src/components/Button';
@@ -11,7 +11,20 @@ import { cn } from '@/src/lib/utils';
 
 export default function Home() {
   const { t } = useLanguage();
-  const [heroLoaded, setHeroLoaded] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const heroImages = [
+    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1920"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const services = [
     {
@@ -44,22 +57,42 @@ export default function Home() {
     // ... I'll simplify testimonials for the demo to use the keys I defined or just keep them as is if they are specific
   ];
 
-  const organizationSchema = {
+  const businessSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "LocalBusiness",
     "name": "L'œil ORG",
+    "image": "https://storage.googleapis.com/static.mira.app/app-assets/eo7cc2y3dv6mcyvlohw7gw/input_file_0.png",
+    "@id": "https://ais-pre-eo7cc2y3dv6mcyvlohw7gw-207514675638.europe-west2.run.app",
     "url": "https://ais-pre-eo7cc2y3dv6mcyvlohw7gw-207514675638.europe-west2.run.app",
-    "logo": "https://ais-pre-eo7cc2y3dv6mcyvlohw7gw-207514675638.europe-west2.run.app/logo.png",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+229-46-56-43-01",
-      "contactType": "customer service",
-      "areaServed": "BJ",
-      "availableLanguage": ["French", "English"]
+    "telephone": "+229-46-56-43-01",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Cotonou",
+      "addressLocality": "Cotonou",
+      "addressCountry": "BJ"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 6.3763836,
+      "longitude": 2.4201774
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
     },
     "sameAs": [
       "https://wa.me/22946564301"
-    ]
+    ],
+    "priceRange": "$$"
   };
 
   return (
@@ -67,28 +100,23 @@ export default function Home() {
       <SEO 
         title={t('seo.home.title')} 
         description={t('seo.home.description')} 
-        schema={organizationSchema}
+        schema={businessSchema}
       />
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          {/* Shimmer Placeholder */}
-          {!heroLoaded && (
-            <div className="absolute inset-0 bg-ink animate-pulse flex items-center justify-center">
-              <div className="w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
-            </div>
-          )}
-          
-          <img 
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920" 
-            alt="Luxury Wedding"
-            onLoad={() => setHeroLoaded(true)}
-            className={cn(
-              "w-full h-full object-cover transition-all duration-1000",
-              heroLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"
-            )}
-            referrerPolicy="no-referrer"
-          />
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentImageIndex}
+              src={heroImages[currentImageIndex]}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </AnimatePresence>
           <div className="absolute inset-0 bg-black/40" />
         </div>
 
@@ -141,7 +169,7 @@ export default function Home() {
       </section>
 
       {/* Introduction */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -233,7 +261,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Highlight */}
-      <section id="gallery-highlight" className="py-24 bg-white overflow-hidden">
+      <section id="gallery-highlight" className="py-24 bg-card overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
             <SectionHeading 
@@ -310,7 +338,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-3xl shadow-sm relative"
+                className="bg-card p-8 rounded-3xl shadow-sm relative"
               >
                 <Quote className="text-gold/20 absolute top-6 right-8" size={48} />
                 <div className="flex items-center space-x-1 mb-6">

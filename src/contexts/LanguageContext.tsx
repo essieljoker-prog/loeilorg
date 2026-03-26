@@ -21,6 +21,12 @@ const translations = {
     'seo.gallery.description': 'Découvrez en images nos plus belles réalisations : mariages, séances beauté et événements organisés par L’œil ORG.',
     'seo.contact.title': 'Contactez L’œil ORG • Devis Gratuit pour Votre Événement',
     'seo.contact.description': 'Prêt à rendre votre événement inoubliable ? Contactez-nous pour un devis gratuit ou une consultation personnalisée.',
+    'seo.services.wedding.title': 'Organisation de Mariage & Wedding Planning de Prestige • L’œil ORG',
+    'seo.services.wedding.description': 'Confiez votre mariage à L’œil ORG. Organisation complète, gestion des prestataires et coordination pour un mariage élégant et sans stress au Bénin.',
+    'seo.services.beauty.title': 'Services de Beauté & Esthétique Professionnels • L’œil ORG',
+    'seo.services.beauty.description': 'Sublimez votre beauté naturelle avec L’œil ORG. Maquillage professionnel, coiffure événementielle et soins pour toutes vos occasions spéciales.',
+    'seo.services.catering.title': 'Service Traiteur Gourmet & Gastronomie • L’œil ORG',
+    'seo.services.catering.description': 'Expériences culinaires raffinées pour vos invités. Menus sur mesure, cocktails créatifs et service professionnel pour vos événements de prestige.',
 
     // Navbar
     'nav.home': 'Accueil',
@@ -111,6 +117,14 @@ const translations = {
     'contact.formMessagePlaceholder': 'Comment pouvons-nous vous aider ?',
     'contact.formSubmit': 'Envoyer ma demande',
     'contact.formNote': 'Nous vous répondrons sous 24h à 48h.',
+    'contact.errorNameRequired': 'Le nom est requis.',
+    'contact.errorNameTooShort': 'Le nom doit contenir au moins 2 caractères.',
+    'contact.errorEmailRequired': 'L\'adresse email est requise.',
+    'contact.errorEmailInvalid': 'Veuillez entrer une adresse email valide.',
+    'contact.errorMessageRequired': 'Le message est requis.',
+    'contact.errorMessageTooLong': 'Le message est trop long.',
+    'contact.errorTypeRequired': 'Veuillez sélectionner un type d\'événement.',
+    'contact.formTypePlaceholder': 'Sélectionnez un service...',
     
     // About Page
     'about.subtitle': 'À Propos de L’œil ORG',
@@ -220,6 +234,12 @@ const translations = {
     'seo.gallery.description': 'Discover in images our most beautiful achievements: weddings, beauty sessions and events organized by L’œil ORG.',
     'seo.contact.title': 'Contact L’œil ORG • Free Quote for Your Event',
     'seo.contact.description': 'Ready to make your event unforgettable? Contact us for a free quote or a personalized consultation.',
+    'seo.services.wedding.title': 'Wedding Planning & Prestige Organization • L’œil ORG',
+    'seo.services.wedding.description': 'Entrust your wedding to L’œil ORG. Complete organization, vendor management, and coordination for a stress-free, elegant wedding in Benin.',
+    'seo.services.beauty.title': 'Professional Beauty & Aesthetics Services • L’œil ORG',
+    'seo.services.beauty.description': 'Enhance your natural beauty with L’œil ORG. Professional makeup, event hairstyling, and skincare for all your special occasions.',
+    'seo.services.catering.title': 'Gourmet Catering & Gastronomy Services • L’œil ORG',
+    'seo.services.catering.description': 'Exquisite culinary experiences for your guests. Custom menus, creative cocktails, and professional service for your prestige events.',
 
     // Navbar
     'nav.home': 'Home',
@@ -310,6 +330,14 @@ const translations = {
     'contact.formMessagePlaceholder': 'How can we help you?',
     'contact.formSubmit': 'Send my request',
     'contact.formNote': 'We will get back to you within 24h to 48h.',
+    'contact.errorNameRequired': 'Name is required.',
+    'contact.errorNameTooShort': 'Name must be at least 2 characters.',
+    'contact.errorEmailRequired': 'Email address is required.',
+    'contact.errorEmailInvalid': 'Please enter a valid email address.',
+    'contact.errorMessageRequired': 'Message is required.',
+    'contact.errorMessageTooLong': 'Message is too long.',
+    'contact.errorTypeRequired': 'Please select an event type.',
+    'contact.formTypePlaceholder': 'Select a service...',
     
     // About Page
     'about.subtitle': 'About L’œil ORG',

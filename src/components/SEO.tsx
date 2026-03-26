@@ -22,6 +22,8 @@ export const SEO = ({ title, description, image, article, schema }: SEOProps) =>
       <title>{title} | L'œil ORG</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={article ? 'article' : 'website'} />

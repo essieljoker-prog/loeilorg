@@ -33,11 +33,32 @@ export default function Services() {
     }
   ];
 
+  const siteUrl = 'https://ais-pre-eo7cc2y3dv6mcyvlohw7gw-207514675638.europe-west2.run.app';
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": t('nav.home'),
+        "item": `${siteUrl}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t('nav.services'),
+        "item": `${siteUrl}/services`
+      }
+    ]
+  };
+
   return (
     <div className="pt-32 pb-24">
       <SEO 
         title={t('seo.services.title')} 
         description={t('seo.services.description')} 
+        schema={breadcrumbSchema}
       />
       <div className="container mx-auto px-6">
         <SectionHeading 
